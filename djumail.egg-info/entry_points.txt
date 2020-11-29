@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        djumail=djumail.djumail:main
+    

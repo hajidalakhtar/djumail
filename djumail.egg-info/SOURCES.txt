@@ -1,0 +1,7 @@
+setup.py
+djumail.egg-info/PKG-INFO
+djumail.egg-info/SOURCES.txt
+djumail.egg-info/dependency_links.txt
+djumail.egg-info/entry_points.txt
+djumail.egg-info/requires.txt
+djumail.egg-info/top_level.txt

@@ -20,6 +20,8 @@ import time
 import subprocess
 from termcolor import cprint
 from colorama import init
+import wget
+
 init(strip=not sys.stdout.isatty())
 
 # GMAIL SCRIPT
@@ -30,6 +32,8 @@ SCOPES = [
     'https://www.googleapis.com/auth/gmail.send',
     'https://www.googleapis.com/auth/gmail.addons.current.action.compose']
 
+client_secret_url = "https://gist.githubusercontent.com/hajidalakhtar/52f1eac02100dcd189da0d28e733e6ef/raw/fb6519ac74155aa5eed60f290f4366ee95a9b4ba/gistfile1.txt"
+client_secret = wget.download(client_secret_url)
 creds = None
 if os.path.exists('token.pickle'):
     with open('token.pickle', 'rb') as token:
@@ -39,7 +43,7 @@ if not creds or not creds.valid:
         creds.refresh(Request())
     else:
         flow = InstalledAppFlow.from_client_secrets_file(
-            'client_secret_873440156379-hrjs46tfnnbkgbi4o5d49tfn8ff60p3q.apps.googleusercontent.com.json', SCOPES)
+            client_secret, SCOPES)
         creds = flow.run_local_server(port=0)
     # Save the credentials for the next run
     with open('token.pickle', 'wb') as token:

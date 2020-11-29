@@ -1,23 +1,23 @@
-
 from setuptools import find_packages, setup
+import urllib.request
 import requests
-import urllib
 
 
 
 def read_requirements():
-    link = "https://raw.githubusercontent.com/hajidalakhtar/djumail/main/requirements.txt?token=AGU7YEOFHEKPZM7QVYYUVV27YNJGW"
-    f = urllib.request.urlopen(link)
+
+    link = "https://gist.githubusercontent.com/hajidalakhtar/73792df96238efd649b03085eccb219a/raw/eabef4d22779bed2f0d347d1e683e27ee6493b47/gistfile1.txt"
+    with urllib.request.urlopen(link) as f:
     # with open("requirements.txt", "r") as req:
-    content = f.read()
-    requirements = content.split("\n")
+        content = f.read().decode(f.headers.get_content_charset())
+        requirements = content.split("\n")
 
     return requirements
 
 
 setup(
     name="djumail",
-    version="1",
+    version="1.5",
     packages=find_packages(),
     include_package_data=True,
     install_requires=read_requirements(),
